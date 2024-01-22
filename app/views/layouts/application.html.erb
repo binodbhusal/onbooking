@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Onbooking</title>
+    <%= favicon_link_tag 'onbooking.ico' %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,8 +13,6 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
-    </main>
   </body>
 </html>
