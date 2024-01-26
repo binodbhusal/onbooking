@@ -1,0 +1,43 @@
+<header class="sticky top-0 z-50 grid grid-cols-3 shadow-md p-5 md:px-10" data-controller=header>
+<!-- Left Section  -->
+<div class="relative flex items-center h-10 my-auto sticky top-0 z-50">
+<%= link_to root_path do %>
+<img src= "<%= asset_path('logo.webp')%>" alt="logo" 
+style="object-fit:contain; 
+object-position:left; height:120px; width:120px;" />
+<% end %>
+</div>
+<!-- Center Section  -->
+<div class="flex items-center md:border-2 rounded-full md:border-2 md:shadow-sm py-2 h-12 hover:bg-gray-100 bg-gray-200 md:bg-transparent">
+<input placeholder="Start your Search" class="flex-grow pl-5 bg-transparent focus:outline-none border-none  text-gray-600 text-sm placeholder-gray-400  h-8" />
+<%= heroicon "magnifying-glass", options: { class: "hidden h-8 bg-red-400 rounded-full p-2 cursor-pointer text-white  md:mx-2 md:inline-flex" } %>
+</div>
+<!-- Right Section  -->
+<div class="flex space-x-4 items-center justify-end text-gray-500">
+<p class="hidden md:inline cursor-pointer">Become a host </p>
+<%= heroicon "globe-alt", options:{class: "h-6 cursor-pointer"} %>
+<button data-header-target="openUserMenu" class="flex items-center border-2 rounded-full p-2 space-x-2">
+<%= heroicon "bars-3", options:{class:"h-6"} %>
+<%= heroicon "user-circle", options:{class:"h-6"} %>
+
+</button>
+<div class= "hidden origin-top-right absolute right-8 md:right-12 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus: out top-16"
+id="user-dropdown-menu"
+role="menu"
+aria-orientation="vertical"
+aria-labeledby="user-menubutton"
+tabindex= -1
+data-transition-enter="transition ease-out duration-100"
+data-transition-enter-start="transform opacity-0 scale-95"
+data-transition-enter-end="transform opacity-100 scale-100"
+data-transition-leave="transition ease-in duration-75"
+data-transition-leave-start="transform opacity-100 scale-100"
+data-transition-leave-end="transform opacity-0 scale-95"
+>
+<a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your profile </a>
+<a href="#" class="block px-4 py-2 text-sm text-gray-700" rele="menuitem" tabindex="-1" id="user-menu-item-1">Seetings </a>
+<a href="#" class="block px-4 py-2 text-sm text-gray-700" rele="menuitem" tabindex="-1" id="user-menu-item-2">Sign Out </a>
+</div>
+</div>
+
+</header>
