@@ -1,4 +1,4 @@
-<header class="sticky top-0 z-50 grid grid-cols-3 shadow-md p-5 md:px-10" data-controller=header>
+<header class="sticky top-0 z-50 grid grid-cols-3 shadow-md p-5 md:px-10" data-controller="header">
 <!-- Left Section  -->
 <div class="relative flex items-center h-10 my-auto sticky top-0 z-50">
 <%= link_to root_path do %>
@@ -34,10 +34,33 @@ data-transition-leave="transition ease-in duration-75"
 data-transition-leave-start="transform opacity-100 scale-100"
 data-transition-leave-end="transform opacity-0 scale-95"
 >
-<a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your profile </a>
-<a href="#" class="block px-4 py-2 text-sm text-gray-700" rele="menuitem" tabindex="-1" id="user-menu-item-1">Seetings </a>
-<a href="#" class="block px-4 py-2 text-sm text-gray-700" rele="menuitem" tabindex="-1" id="user-menu-item-2">Sign Out </a>
-</div>
+<div class="p-1" role="none">
+<a 
+data-header-target="userAuthLinks" 
+class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" 
+role="menuitem" tabindex="-1" 
+id="user-menu-item-0"
+href="#"
+>
+Sign up
+ </a>
+<a data-header-target="userAuthLinks" 
+class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" 
+role="menuitem" 
+tabindex="-1" 
+id="user-menu-item-1 "
+ href="#"
+>
+Log in
+</a>
 </div>
 
+<div class="p-1" role="none">
+<a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-2" id="user-menu-item-0">Host your home </a>
+<a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" rele="menuitem" tabindex="-1" id="user-menu-item-3">Host an experience</a>
+<a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" rele="menuitem" tabindex="-1" id="user-menu-item-3">Help</a>
+</div>
+</div>
+</div>
+<%= render 'shared/modal' %>
 </header>
