@@ -35,6 +35,9 @@ data-transition-leave-start="transform opacity-100 scale-100"
 data-transition-leave-end="transform opacity-0 scale-95"
 >
 <div class="p-1" role="none">
+<% if user_signed_in? %>
+    <%= link_to "Log out", destroy_user_session_path, data:{"turbo-method": :delete}, class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+   <%else %>
 <a 
 data-header-target="userAuthLinks" 
 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" 
@@ -53,6 +56,7 @@ id="user-menu-item-1 "
 >
 Log in
 </a>
+<%end%>
 </div>
 
 <div class="p-1" role="none">
@@ -62,5 +66,5 @@ Log in
 </div>
 </div>
 </div>
-<%= render 'shared/modal' %>
+<%= render 'shared/modal', modal_content: 'shared/user_auth_form' %>
 </header>

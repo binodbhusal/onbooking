@@ -1,3 +1,17 @@
 header {
   background-color: #fff;
 }
+.invalid-email-input-field {
+  border-color: red !important;
+  &:focus-within {
+    border-color: red !important;
+  }
+  label {
+    color: red !important;
+  }
+  input[type="email"], input[type="text"]{
+    &::placeholder{
+      color: red;
+    }
+  }
+}
