@@ -71,11 +71,13 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers', '~> 6.0'
 end
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 gem 'tailwindcss-rails', '~> 2.3'
 
 gem 'devise', '~> 4.9'
+gem 'faker'
 gem 'heroicon'
 gem 'sass-rails', '~> 6.0'
