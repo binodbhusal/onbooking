@@ -107,6 +107,7 @@ GEM
     faker (3.2.3)
       i18n (>= 1.8.11, < 2)
     ffi (1.16.3)
+    geocoder (1.8.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     heroicon (1.0.0)
@@ -305,6 +306,7 @@ DEPENDENCIES
   devise (~> 4.9)
   factory_bot_rails
   faker
+  geocoder
   heroicon
   importmap-rails
   jbuilder
