@@ -6,8 +6,12 @@ class="container mx-auto px-4 py-5 md:py-14 sm:py-14"
 >
 <ul role ="list" class="grid grid-cols-1 gap-y-8 md:grid-cols-3 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
 <% @properties.each do |p| %>
-<li class="relative">
-<div class="group block w-full aspect-w-7 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 hover:opacity-75 ">
+<li class="relative"
+data-geolocation-target="property"
+data-latitude="<%= p.latitude %>"
+data-longitude="<%= p.longitude%>"
+>
+<div class="group block w-full aspect-w-7 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 hover:opacity-75">
 <img src="https://www.gannett-cdn.com/-mm-/05b227ad5b8ad4e9dcb53af4f31d7fbdb7fa901b/c=0-64-2119-1259/local/-/media/USATODAY/USATODAY/2014/08/13/1407953244000-177513283.jpg?width=2560" class="object-cover rounded-lg m-w-full"/>
 <button type="button" class="absolute inset-0 focus:outline-none">
 <span class="sr-only">View image details</span>
@@ -15,8 +19,8 @@ class="container mx-auto px-4 py-5 md:py-14 sm:py-14"
 </div>
 <p class="mt-t block text-sm font-medium text-gray-900 truncate pointer-events-none"><p><%= p.address_info %></p>
 </p>
-<p class="mt-t block text-sm font-medium text-gray-500 pointer-events-none">5,563 kilometers away</p>
-<p class="mt-t block text-sm font-medium text-gray-500 pointer-events-none">Aug 04-10</p>
+<p class="mt-t block text-sm font-medium text-gray-500 pointer-events-none"></p>
+<p data-distance-away class="mt-t block text-sm font-medium text-gray-500 pointer-events-none">Aug 04-10</p>
 <p class="mt-t block text-sm font-medium text-gray-500 pointer-events-none">£635 night</p>
 </li>
 <% end %>
