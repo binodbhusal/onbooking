@@ -7,6 +7,9 @@ class Property < ApplicationRecord
   validates :country, presence: true
   validates :address1, presence: true
 
+  has_many_attached :images
+  has_many :reviews, as: :reviewable
+
   monetize :price_cents, allow_nil: true
 
   def address_info
@@ -20,4 +23,5 @@ class Property < ApplicationRecord
     # [address1,address2, city, state, country].compact.join(', ')
     [state, country].compact.join(', ')
   end
+  
 end

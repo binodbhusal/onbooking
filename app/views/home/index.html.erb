@@ -12,16 +12,22 @@ data-latitude="<%= p.latitude %>"
 data-longitude="<%= p.longitude%>"
 >
 <div class="group block w-full aspect-w-7 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 hover:opacity-75">
-<img src="https://www.gannett-cdn.com/-mm-/05b227ad5b8ad4e9dcb53af4f31d7fbdb7fa901b/c=0-64-2119-1259/local/-/media/USATODAY/USATODAY/2014/08/13/1407953244000-177513283.jpg?width=2560" class="object-cover rounded-lg m-w-full"/>
+<%= image_tag p.images.first, class:"object-cover rounded-lg m-w-full" %>
 <button type="button" class="absolute inset-0 focus:outline-none">
 <span class="sr-only">View image details</span>
 </button>
 </div>
 <p class="mt-t block text-sm font-medium text-gray-900 truncate pointer-events-none"><p><%= p.address_info %></p>
 </p>
-<p class="mt-t block text-sm font-medium text-gray-500 pointer-events-none"></p>
-<p data-distance-away class="mt-t block text-sm font-medium text-gray-500 pointer-events-none">Aug 04-10</p>
-<p class="mt-t block text-sm font-medium text-gray-500 pointer-events-none"><%= humanized_money_with_symbol(p.price) %></p>
+
+
+<p class="mt-t block text-sm font-medium text-gray-900 pointer-events-none">
+<%=p.average_rating.round(2) %>
+<%= heroicon "star", options:{class: "h-4 relative cursor-pointer inline-block", style:"bottom:2px;"} %>
+</p>
+<p data-distance-away class="mt-t block text-sm font-medium text-gray-500 pointer-events-none"></p>
+<p class="mt-t block text-sm font-medium text-gray-500 pointer-events-none">Aug 04-10</p>
+<p class="mt-t block text-sm font-medium text-gray-900 pointer-events-none"><%= humanized_money_with_symbol(p.price) %> night</p>
 </li>
 <% end %>
 </ul>
