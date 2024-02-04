@@ -1,7 +1,7 @@
 
 <div  data-controller="geolocation"
-data-latitude=""
-data-longitude=""
+data-latitude="<%=current_user&.profile&.latitude %>"
+data-longitude="<%= current_user&.profile&.longitude %>"
 class="container mx-auto px-4 py-5 md:py-14 sm:py-14"
 >
 <ul role ="list" class="grid grid-cols-1 gap-y-8 md:grid-cols-3 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
@@ -21,7 +21,7 @@ data-longitude="<%= p.longitude%>"
 </p>
 <p class="mt-t block text-sm font-medium text-gray-500 pointer-events-none"></p>
 <p data-distance-away class="mt-t block text-sm font-medium text-gray-500 pointer-events-none">Aug 04-10</p>
-<p class="mt-t block text-sm font-medium text-gray-500 pointer-events-none">£635 night</p>
+<p class="mt-t block text-sm font-medium text-gray-500 pointer-events-none"><%= humanized_money_with_symbol(p.price) %></p>
 </li>
 <% end %>
 </ul>
