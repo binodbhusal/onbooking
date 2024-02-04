@@ -1,31 +1,40 @@
 import { Controller } from '@hotwired/stimulus'
 import {  getDistance, convertDistance } from 'geolib';
+import {isEmpty} from 'lodash-es'
 
 export default class extends Controller {
     static targets = ['property']
 connect() {
-    console.log('geolib', getDistance)
-    console.log('i am geolocation connected')
-    console.log('this element', this.element)
-    window.navigator.geolocation.getCurrentPosition ((position) => {
-        console.log(position)
-        this.element.dataset.latitude = position.coords.latitude;
-        this.element.dataset.longitude = position.coords.longitude;
-        const distance = getDistance (
-            { latitude: position.coords.latitude, longitude: position.coords.longitude },
-            { latitude: 38.7895586, longitude: -9.1650127 }
-
-        )
-        console.log(convertDistance(distance, 'km'))
-        this.propertyTargets.forEach((property) => {
-           
-            const distanceFind = getDistance (
-                { latitude: position.coords.latitude, longitude: position.coords.longitude },
-                { latitude: property.dataset.latitude, longitude: property.dataset.longitude }
+   
+    if (isEmpty(this.element.dataset.latitude) && isEmpty(this.element.dataset.longitude))
+    {
+        window.navigator.geolocation.getCurrentPosition ((position) => {
+           this.setUserCoordinates(position.coords);
+            this.setDistanceText();
+        });
+    } else {
+        this.setDistanceText();
+    };
     
-            )
-            property.querySelector('[data-distance-away]').innerHTML = `${Math.round(convertDistance(distanceFind, 'km'))} kilometers away`
-        })
+}
+setUserCoordinates(coordinates){
+    this.element.dataset.latitude = coordinates.latitude
+    this.element.dataset.longitude = coordinates.longitude
+}
+getUserCoordinates() {
+    return {
+        latitude: this.element.dataset.latitude,
+        longitude: this.element.dataset.longitude
+    }
+}
+setDistanceText() {
+    this.propertyTargets.forEach((property) => {
+           
+        const distanceFind = getDistance (
+            this.getUserCoordinates(),
+            { latitude: property.dataset.latitude, longitude: property.dataset.longitude }
+        )
+        property.querySelector('[data-distance-away]').innerHTML = `${Math.round(convertDistance(distanceFind, 'km'))} kilometers away`
     })
 }
 }
