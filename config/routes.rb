@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root "home#index"
   namespace :api do 
   resources :users, only: [:show]
+  resources :favroutes, only: [:create, :destroy]
   get "/users_by_email" => "users_by_emails#show", as: :users_by_email
   end
 end
