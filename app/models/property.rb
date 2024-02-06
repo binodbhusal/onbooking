@@ -9,6 +9,8 @@ class Property < ApplicationRecord
 
   has_many_attached :images
   has_many :reviews, as: :reviewable
+  has_many :favroutes, dependent: :destroy
+  has_many :favrouted_users, through: :favroutes, source: :user
 
   monetize :price_cents, allow_nil: true
 
@@ -23,5 +25,10 @@ class Property < ApplicationRecord
     # [address1,address2, city, state, country].compact.join(', ')
     [state, country].compact.join(', ')
   end
-  
+
+  def favrouted_by?(user)
+    return false if user.nil?
+
+    favrouted_users.include?(user)
+  end
 end
