@@ -6,13 +6,13 @@ default: &default
 
 development:
   <<: *default
-  database: onbooking
+  database: onbooking_dev
   username: postgres
   password: 2040
 
 test:
   <<: *default
-  database: onbooking
+  database: onbooking_test
   username: postgres
   password: 2040
 
