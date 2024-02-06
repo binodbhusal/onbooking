@@ -13,5 +13,7 @@ RSpec.describe Property, type: :model do
     it { should validate_presence_of(:country) }
     it { is_expected.to monetize(:price).allow_nil }
     it { should have_many(:reviews) }
+    it { should have_many(:favroutes).dependent(:destroy) }
+    it { should have_many(:favrouted_users).through(:favroutes).source(:user) }
   end
 end
