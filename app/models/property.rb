@@ -11,7 +11,8 @@ class Property < ApplicationRecord
   has_many :reviews, as: :reviewable
   has_many :favroutes, dependent: :destroy
   has_many :favrouted_users, through: :favroutes, source: :user
-
+  has_many :reservations, dependent: :destroy
+  has_many :reserved_users, through: :reservations, source: :user
   monetize :price_cents, allow_nil: true
 
   def address_info
@@ -30,5 +31,11 @@ class Property < ApplicationRecord
     return false if user.nil?
 
     favrouted_users.include?(user)
+  end
+  def available_dates
+    date_format = "%b %e"
+    next_reservation = reservations.where("reservation_date > ?", Date.today).order(:reservation_date).first
+    return Date.tomorrow.strftime(date_format)..Date.today.end_of_year.strftime(date_format) if next_reservation.nil?
+    Date.tomorrow.strftime(date_format)..next_reservation.reservation_date.strftime(date_format)
   end
 end

@@ -15,5 +15,6 @@ RSpec.describe Property, type: :model do
     it { should have_many(:reviews) }
     it { should have_many(:favroutes).dependent(:destroy) }
     it { should have_many(:favrouted_users).through(:favroutes).source(:user) }
+    it { should have_many(:reserved_users).through(:reservations).source(:user) }
   end
 end

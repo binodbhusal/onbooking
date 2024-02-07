@@ -43,7 +43,7 @@ class="w-7 h-7 hover:cursor-pointer">
 <%= heroicon "star", options:{class: "h-4 relative cursor-pointer inline-block", style:"bottom:2px;"} %>
 </p>
 <p data-distance-away class="mt-t block text-sm font-medium text-gray-500 pointer-events-none"></p>
-<p class="mt-t block text-sm font-medium text-gray-500 pointer-events-none">Aug 04-10</p>
+<p class="mt-t block text-sm font-medium text-gray-500 pointer-events-none"><%= p.available_dates.first%> - <%= p.available_dates.last%></p>
 <p class="mt-t block text-sm font-medium text-gray-900 pointer-events-none"><%= humanized_money_with_symbol(p.price) %> night</p>
 </li>
 <% end %>
