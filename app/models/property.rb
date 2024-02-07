@@ -32,10 +32,12 @@ class Property < ApplicationRecord
 
     favrouted_users.include?(user)
   end
+
   def available_dates
-    date_format = "%b %e"
-    next_reservation = reservations.where("reservation_date > ?", Date.today).order(:reservation_date).first
+    date_format = '%b %e'
+    next_reservation = reservations.where('reservation_date > ?', Date.today).order(:reservation_date).first
     return Date.tomorrow.strftime(date_format)..Date.today.end_of_year.strftime(date_format) if next_reservation.nil?
+
     Date.tomorrow.strftime(date_format)..next_reservation.reservation_date.strftime(date_format)
   end
 end
