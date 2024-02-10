@@ -9,7 +9,7 @@ export default class extends Controller {
     this.userAuthLinksTargets.forEach((link) => {
       link.addEventListener('click',(event) => {
         event.preventDefault()
-        document.getElementById('modal-trigger').click()
+        document.getElementById('user-auth-modal').click()
       })
     })
   }

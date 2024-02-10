@@ -6,11 +6,19 @@ export default class extends Controller {
  
   connect() {
     console.log('i am connected')
-    const modalContainer = document.getElementById('modal-container')
-    const modalBackdrop = document.getElementById('modal-backdrop')
+    const modalTriggerId = this.element.dataset.modalTriggerId;
+
+    const modalContainer = document.getElementById(`modal-${modalTriggerId}-container`)
+    const modalBackdrop = document.getElementById(`modal-${modalTriggerId}-backdrop`)
+    if(modalBackdrop && modalTriggerId==='share-link-modal'){
+      modalBackdrop.style.marginTop='100px'
+    }
+    // if(modalBackdrop && modalTriggerId ==='property-description-modal'){
+    // modalBackdrop.style.overscrollBehaviorY='visible'
+    // }
     // enter(document.getElementById('modal-container'))
     // enter(document.getElementById('modal-backdrop'))
-    modalContainer.addEventListener('click', this.closeModal)
+    modalContainer.addEventListener('click', this.closeModal.bind(this))
     
     this.btnCloseTarget.addEventListener('click', () => {
       leave(modalContainer)
@@ -19,16 +27,21 @@ export default class extends Controller {
 
   }
   closeModal(event) {
-    const closeModalClicked = document.getElementById('modal-backdrop').contains(event.target)
-    if(!closeModalClicked && event.target.id!=='modal-trigger'){
-      leave(document.getElementById('modal-container'))
-      leave(document.getElementById('modal-backdrop'))
+    const modalTriggerId = event.currentTarget.dataset.modalTriggerId;
+    const closeModalClicked = document.getElementById(`modal-${modalTriggerId}-backdrop`).contains(event.target)
+    if(!closeModalClicked && event.target.id!== modalTriggerId){
+      leave(document.getElementById(`modal-${modalTriggerId}-container`))
+      leave(document.getElementById(`modal-${modalTriggerId}-backdrop`))
     }
   }
   displayModal(event) {
     event.preventDefault()
-    enter(document.getElementById('modal-container'))
-    enter(document.getElementById('modal-backdrop'))
+    const modalTriggerId = this.element.dataset.modalTriggerId;
+    console.log(modalTriggerId)
+    const container = document.getElementById(`modal-${modalTriggerId}-container`)
+    console.log('containe id:',container)
+    enter(document.getElementById(`modal-${modalTriggerId}-container`))
+    enter(document.getElementById(`modal-${modalTriggerId}-backdrop`))
     leave(document.getElementById('user-dropdown-menu'))
   }
 }

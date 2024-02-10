@@ -5,7 +5,8 @@ export default class extends Controller {
 connect() {
     console.log('I am connected favroute')
 }
-propFavroute () {
+propFavroute (e) {
+e.preventDefault()
     if (this.element.dataset.userLoggedIn === 'false') {
         return document.querySelector('[data-header-target="userAuthLinks"]').click()
     }
