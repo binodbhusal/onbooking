@@ -40,7 +40,7 @@ class="w-7 h-7 hover:cursor-pointer">
 </p>
 
 <p class="mt-t block text-sm font-medium text-gray-900 pointer-events-none">
-<%=p.average_rating.round(2) %>
+<%=p.average_rating&.round(2) %>
 <%= heroicon "star", options:{class: "h-4 relative cursor-pointer inline-block", style:"bottom:2px;"} %>
 </p>
 <p data-distance-away class="mt-t block text-sm font-medium text-gray-500 pointer-events-none"></p>
