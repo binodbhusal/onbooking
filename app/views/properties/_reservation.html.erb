@@ -1,0 +1,75 @@
+<div class="mt-4 lg:mt-0 lg:row-span-3 border border-gray-100 rounded-xl px-4 pb-5 pt-5 shadow-lg"
+data-controller="reservation-component"
+data-default-checkin-date="<%=Date.tomorrow.to_formatted_s(:utc_short_date)%>"
+data-default-checkout-date="<%= (Date.tomorrow + 1.day).strftime("%m/%d/%y") %>"
+data-nightly-price = <%=humanized_money(@property.price)%>
+data-cleaning-fee= <%= humanized_money(Property::CLEANING_FEE_MONEY)%>
+>
+<div class="mt-10 lg:mt-0 ">
+<h2 class="text-2xl font-medium text-gray-900"><%= humanized_money_with_symbol(@property.price) %> night</h2>
+<div class="isolate -space-y-px rounded-md shadow-sm mt-6 mb-6">
+    <div class="relative rounded-md border border-gray-300 rounded-b-none px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:border-2 ring-gray-100 focus-within:border-gray-600">
+         <label for="checkin" class="block pl-2 text-xs font-medium text-gray-700 uppercase">Check in</label>
+         <input  
+         type="text" 
+         id="checkinid"
+         name="checkin"  
+         class="block w-full border-0 p-0 text-gray-900 focus:ring-0 sm:text-sm pl-2 placeholder-gray-500" 
+         placeholder="<%=Date.tomorrow.to_formatted_s(:utc_short_date)%>"
+         data-reservation-component-target="checkin" />
+         </div>
+         
+         <div class="relative rounded-md  border border-gray-300 rounded-t-none px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:border-2 ring-gray-100 focus-within:border-gray-600">
+         <label for="checkout" class="block pl-2 text-xs font-medium text-gray-700 uppercase">Check out</label>
+         <input  
+         type="text" 
+         name="checkout"  
+         placeholder="<%= (Date.tomorrow + 1.day).to_formatted_s(:utc_short_date)%>"
+         class="block w-full border-0 p-0 text-gray-900 focus:ring-0 sm:text-sm pl-2 placeholder-gray-500" 
+         data-reservation-component-target="checkout" />
+         </div>
+</div>
+        
+<div class="bg-white">
+<div class="divide-y divide-gray-200"></div>
+<dl class="space-y-4">
+<div class="flex items-center justify-between">
+<dt class="text-sm"><%= humanized_money_with_symbol(@property.price)%> x 
+<span data-reservation-component-target="numOfNights">1</span> nights </dt>
+<dd class="text-sm font-medium text-gray-900">€<span data-reservation-component-target="nightlyTotal"><%=@property.price%></span></dd>
+</div>
+<div class="flex items-center justify-between">
+<dt class="text-sm">Weekly discount </dt>
+<dd class="text-sm font-medium text-gray-900">€<span data-reservation-component-target="weeklyDiscount"><%=@property.price*0.10%></span></dd>
+</div>
+<div class="flex items-center justify-between">
+<dt class="text-sm" >Service Fee </dt>
+<dd class="text-sm font-medium text-gray-900">
+€<span data-reservation-component-target="serviceFee">
+<%=@property.price*0.08%></span>
+</dd>
+</div>
+<div class="flex items-center justify-between">
+<dt class="text-sm">Cleaning Fee </dt>
+<dd class="text-sm font-medium text-gray-900">€<%= sprintf('%.2f', humanized_money(Property::CLEANING_FEE_MONEY)) %></dd>
+
+</div>
+<div class="flex items-center justify-between border-t border-gray-200 pt-4">
+<dt class="text-base font-medium">Total</dt>
+<dd class="text-base font-medium text-gray-900">
+€<span data-reservation-component-target="total">
+172.86
+</span></dd>
+</div>
+</dl>
+
+<div class="w-full mt-3 sm:mt-6">
+<button data-user-auth-by-email-target="btnSubmit"
+   class="bg-[#df1761] hover:bg-[#e31c51] hover:text-white block w-full h-12  text-base font-medium text-center transition border rounded-md border-stroke text-dark text-gray-200"
+   >
+Reserve
+</button>
+</div>
+</div>
+</div>
+</div>
