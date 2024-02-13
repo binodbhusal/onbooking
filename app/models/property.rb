@@ -14,7 +14,9 @@ class Property < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_many :reserved_users, through: :reservations, source: :user
   monetize :price_cents, allow_nil: true
-
+  CLEANING_FEE = 6000.freeze
+  CLEANING_FEE_MONEY = Money.new(CLEANING_FEE)
+  SERVICE_FEE_PERCENT = (0.8).freeze
   def address_info
     "#{city} #{state}, #{country}".strip
   end
