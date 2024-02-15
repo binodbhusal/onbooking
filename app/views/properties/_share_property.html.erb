@@ -12,7 +12,9 @@ data-share-url="<%= url_for(only_path: false)%>"
         <p class="text-2xl font-medium text-gray-600 pb-5">Sahre this place</p>
          <div class="relative flex items-center space-x-3">
          <div class="flex-shrink-0">
+         <%if @property.images.first.present?%>
          <%=image_tag @property.images.first, class:"h-14 w-14 rounded-lg"%>
+         <%end%>
          </div>
          <div class="flex-1 min-w-0">
          <p class="text-sm font-medium text-gray-900 property-info"><%=@property.name%>, <%=@property.address_info%> </p>

@@ -7,7 +7,7 @@ class="container mx-auto px-4 py-5 md:py-14 sm:py-14"
 <ul role ="list" class="grid grid-cols-1 gap-y-8 md:grid-cols-3 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
 <% @properties.each do |p| %>
     <%= link_to property_path(p) do %>
-        <li class="relative"
+<li class="relative"
 data-geolocation-target="property"
 data-latitude="<%= p.latitude %>"
 data-longitude="<%= p.longitude%>"
@@ -43,9 +43,10 @@ class="w-7 h-7 hover:cursor-pointer">
 <%=p.average_rating&.round(2) %>
 <%= heroicon "star", options:{class: "h-4 relative cursor-pointer inline-block", style:"bottom:2px;"} %>
 </p>
+
 <p data-distance-away class="mt-t block text-sm font-medium text-gray-500 pointer-events-none"></p>
-<p class="mt-t block text-sm font-medium text-gray-500 pointer-events-none"><%= p.available_dates.first%> - <%= p.available_dates.last%></p>
-<p class="mt-t block text-sm font-medium text-gray-900 pointer-events-none"><%= humanized_money_with_symbol(p.price) %> night</p>
+<p class="mt-1 block text-sm font-medium text-gray-500 pointer-events-none"> <%= p.available_dates.first %> - <%= p.available_dates.last %></p>
+<p class="mt-1 block text-sm font-medium text-gray-900 pointer-events-none"><%= humanized_money_with_symbol(p.price) %> night</p>
 </li>
     <%end%>
 

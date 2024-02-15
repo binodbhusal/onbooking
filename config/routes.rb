@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
-  resources :properties, only: [:show]
+  resources :properties, only: [:show] do
+    resources :reservations, only: [:new], controller: "properties/reservations"
+  end
+  resources :reservation_payments, only: [:create]
   namespace :api do 
   resources :users, only: [:show]
   resources :favroutes, only: [:create, :destroy]

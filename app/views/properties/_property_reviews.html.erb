@@ -46,9 +46,9 @@
     <div class="-my-12 divide-y divide-gray-200">
     <% @property.reviews.each do |review| %>
     <div class="py-12">
-    <div class="flex items-center">
+    <div class="flex flex-col md:flex-row items-center">
     <% if review.user.image.present? %>
-    <%= image_tag review.user.image, alt:review.user.full_name, class:"h-16 w-16 rounded-full"%>
+    <%= image_tag review.user.image, alt:review.user.full_name, class:"h-16 w-16 rounded-full mb-4"%>
     <%end%>
     <div class="ml-4">
     <h4 class="text-sm font-bold text-grya-900"><%=review.user.full_name%> </h4>
@@ -65,7 +65,7 @@
     <p class="sr-only"><%=review.rating%>out of 5 star</p>
     </div>
     </div>
-    <div class="mt-4 space-y-6 text-base italic text-gray-600">
+    <div class="mt-4 space-y-6 text-base italic text-gray-600 text-center md:text-left">
     <p><%=review.body%>
     </div>
     </div>

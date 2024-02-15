@@ -24,6 +24,7 @@ data-cleaning-fee= <%= humanized_money(Property::CLEANING_FEE_MONEY)%>
          <input  
          type="text" 
          name="checkout"  
+         id="checkout"
          placeholder="<%= (Date.tomorrow + 1.day).to_formatted_s(:utc_short_date)%>"
          class="block w-full border-0 p-0 text-gray-900 focus:ring-0 sm:text-sm pl-2 placeholder-gray-500" 
          data-reservation-component-target="checkout" />
@@ -40,13 +41,15 @@ data-cleaning-fee= <%= humanized_money(Property::CLEANING_FEE_MONEY)%>
 </div>
 <div class="flex items-center justify-between">
 <dt class="text-sm">Weekly discount </dt>
-<dd class="text-sm font-medium text-gray-900">€<span data-reservation-component-target="weeklyDiscount"><%=@property.price*0.10%></span></dd>
+<% if@property.present?%>
+<dd class="text-sm font-medium text-gray-900">€<span data-reservation-component-target="weeklyDiscount"><%=@property.price&. * 0.10%></span></dd>
+<% end %>
 </div>
 <div class="flex items-center justify-between">
 <dt class="text-sm" >Service Fee </dt>
 <dd class="text-sm font-medium text-gray-900">
 €<span data-reservation-component-target="serviceFee">
-<%=@property.price*0.08%></span>
+<%=@property.price&. * 0.08%></span>
 </dd>
 </div>
 <div class="flex items-center justify-between">
@@ -64,10 +67,13 @@ data-cleaning-fee= <%= humanized_money(Property::CLEANING_FEE_MONEY)%>
 </dl>
 
 <div class="w-full mt-3 sm:mt-6">
-<button data-user-auth-by-email-target="btnSubmit"
+<button 
+   data-submit-url="<%=new_property_reservation_path(@property)%>"
+   data-action="reservation-component#submitReservationComponent"
+   type="submit"
    class="bg-[#df1761] hover:bg-[#e31c51] hover:text-white block w-full h-12  text-base font-medium text-center transition border rounded-md border-stroke text-dark text-gray-200"
-   >
-Reserve
+>
+   Reserve
 </button>
 </div>
 </div>

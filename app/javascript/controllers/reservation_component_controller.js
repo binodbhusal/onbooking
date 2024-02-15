@@ -1,6 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 import { Datepicker } from 'vanillajs-datepicker';
 import {isEmpty} from 'lodash-es'
+import Swal from 'sweetalert2'
 export default class extends Controller {
 static targets = ['checkin', 'checkout', 'numOfNights', 
 'nightlyTotal', 'serviceFee', 'total', 'weeklyDiscount', 'cleaningFee']
@@ -73,13 +74,46 @@ updateServiceFee(){
 this.serviceFeeTarget.textContent = this.calculateServiceFee()
 this.updateTotal() 
 }
-
-updateTotal() {
+calculateTotal() {
   const nightsTotal = this.calculateNightsTotal()
   const weeklyDiscount = this.calculateWeeklyDiscount()
   const serviceFee = this.calculateServiceFee()
-  const cleaningFee =parseFloat(this.element.dataset.cleaningFee)
+  const cleaningFee = parseFloat(this.element.dataset.cleaningFee)
   const total = (+nightsTotal) +  (+weeklyDiscount) + (+serviceFee) + (+cleaningFee)
-this.totalTarget.textContent =  total.toFixed(2)
+  return total.toFixed(2);
+}
+updateTotal() {
+this.totalTarget.textContent = (this.calculateTotal())
+}
+buildReservationParams() {
+  const params = {
+    checkin_date: this.checkinTarget.value,
+    checkout_date: this.checkoutTarget.value,
+    sub_total: this.calculateNightsTotal(),
+    weekly_discount: this.calculateWeeklyDiscount(),
+    service_fee: this.calculateServiceFee(),
+    cleaning_fee: this.element.dataset.cleaningFee,
+    total: this.calculateTotal(),
+  }
+  const searchParams = new URLSearchParams(params)
+  return searchParams.toString()
+}
+buildSubmitUrl(url) {
+  return `${url}?${this.buildReservationParams()}`
+}
+submitReservationComponent(e) {
+  if(isEmpty(this.checkinTarget.value)){
+    setTimeout(() => {
+     this.checkinTarget.focus()
+  }, 100); 
+   return
+  }else if(isEmpty(this.checkoutTarget.value))
+   {
+    setTimeout(() => {
+     this.checkoutTarget.focus()
+  }, 100); 
+  return
+  }
+Turbo.visit(this.buildSubmitUrl(e.target.dataset.submitUrl))
 }
 }

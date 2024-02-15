@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_11_170721) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_14_231851) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,24 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_11_170721) do
     t.index ["property_id", "user_id"], name: "index_favroutes_on_property_id_and_user_id", unique: true
     t.index ["property_id"], name: "index_favroutes_on_property_id"
     t.index ["user_id"], name: "index_favroutes_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.bigint "reservation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "sub_total_cents"
+    t.string "sub_total_currency"
+    t.integer "weekly_discount_cents"
+    t.string "weekly_discount_currency"
+    t.integer "service_fee_cents"
+    t.string "service_fee_currency"
+    t.integer "cleaning_fee_cents"
+    t.string "cleaning_fee_currency"
+    t.integer "total_cents"
+    t.string "total_currency"
+    t.string "stripe_id"
+    t.index ["reservation_id"], name: "index_payments_on_reservation_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -92,10 +110,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_11_170721) do
   create_table "reservations", force: :cascade do |t|
     t.bigint "property_id", null: false
     t.bigint "user_id", null: false
-    t.datetime "reservation_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["property_id", "user_id", "reservation_date"], name: "index_unique_reservations", unique: true
+    t.date "checkin_date"
+    t.date "checkout_date"
     t.index ["property_id"], name: "index_reservations_on_property_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
@@ -123,6 +141,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_11_170721) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
+    t.string "stripe_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -131,6 +150,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_11_170721) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favroutes", "properties"
   add_foreign_key "favroutes", "users"
+  add_foreign_key "payments", "reservations"
   add_foreign_key "profiles", "users"
   add_foreign_key "reservations", "properties"
   add_foreign_key "reservations", "users"
