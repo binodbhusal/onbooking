@@ -36,8 +36,10 @@ data-transition-leave-end="transform opacity-0 scale-95"
 >
 <div class="p-1" role="none">
 <% if user_signed_in? %>
+    <%= link_to "My profile", "#", class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
     <%= link_to "Log out", destroy_user_session_path, data:{"turbo-method": :delete}, class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
-   <%else %>
+    <%= link_to "Host your home", "#", class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+    <%else %>
 <a 
 data-header-target="userAuthLinks" 
 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" 
@@ -60,7 +62,6 @@ Log in
 </div>
 
 <div class="p-1" role="none">
-<a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-2" id="user-menu-item-0">Host your home </a>
 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" rele="menuitem" tabindex="-1" id="user-menu-item-3">Host an experience</a>
 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" rele="menuitem" tabindex="-1" id="user-menu-item-3">Help</a>
 </div>
