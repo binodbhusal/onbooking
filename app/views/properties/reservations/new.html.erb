@@ -1,0 +1,128 @@
+<div class="relative mx-auto w-full bg-white" 
+data-controller="stripe-elements"
+>
+  <div class="grid min-h-screen grid-cols-10">
+    <div class="col-span-full py-6 px-4 sm:py-12 lg:col-span-6 lg:py-24">
+      <div class="mx-auto w-full max-w-lg">
+        <h1 class="relative text-2xl font-medium text-gray-700 sm:text-3xl">Confirm and pay<span class="mt-2 block h-1 w-10 bg-[#df1761] sm:w-20"></span></h1>
+        <div class="mt-10 flex flex-col space-y-4">
+          <div>
+          <label for="email" class="text-xs font-semibold text-gray-500">
+          Email
+          </label>
+          <input type="email" id="email" name="email" placeholder="john.capler@fang.com" class="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-rose-500" 
+          value="<%=current_user&.email%>"
+          />
+          </div>
+          <div class="relative">
+          <%= stripe_elements_tag(
+            submit_path: reservation_payments_path(
+                property_id: @property.id,
+                user_id: current_user.id,
+                email: current_user.email,
+                checkin_date: @checkin_date,
+                checkout_date: @checkout_date,
+                sub_ttoal: @sub_total,
+                weekly_discount: @weekly_discount,
+                service_fee: @service_fee,
+                cleaning_fee: @cleaning_fee,
+                total: @total
+            )
+          )
+            %>
+         </div>
+        </div>
+        <p class="mt-10 text-center text-sm font-semibold text-gray-500">By placing this order you agree to the <a href="#" class="whitespace-nowrap text-[#df1761] underline hover:text-rose-500">Terms and Conditions</a></p>
+        
+      </div>
+
+    </div>
+    
+    <div class="relative col-span-full bg-[#df1761] bg-opacity-90 flex flex-col py-5 pl-8 pr-4 sm:py-12 lg:col-span-4 lg:py-20">
+      <h2 class="text-center sr-only text-white text-xl pb-4">Reservation summary</h2>
+      <div class="bg-rose-600">
+       
+      </div>
+      <div class="relative">
+        <ul class="space-y-4">
+        
+          <li class="flex justify-between">
+            <div class="inline-flex">
+              <%= image_tag @property.images.first, class:"max-h-16 rounded-lg" %>
+              <div class="ml-3">
+                <p class="text-lg font-semibold text-gray-200"><%=@property.name.capitalize()%></p>
+                <p class="text-sm font-medium text-gray-200 text-opacity-80"><%=@property.address_info%></p>
+              </div>
+            </div>
+          </li>
+          <li class="flex justify-between">
+            <div class="inline-flex">
+              <div class="ml-3">
+                <p class="text-base font-medium text-gray-200">Checkin</p>
+              </div>
+            </div>
+            <p class="text-sm font-semibold text-gray-200 pr-5"><%= @checkin_date %></p>
+          </li>
+          <li class="flex justify-between">
+            <div class="inline-flex">
+              <div class="ml-3">
+                <p class="text-base font-medium text-gray-200">Checkout</p>
+              </div>
+            </div>
+            <p class="text-sm font-semibold text-gray-200 pr-5"><%= @checkout_date %></p>
+          </li>
+          <li class="flex justify-end sr-only">
+              <div class="ml-3">
+                <p class="text-base font-medium text-gray-200 pr-5">22 nights</p>
+              </div>
+           
+          </li>
+          <div class="my-5 h-0.5 w-full bg-white bg-opacity-30"></div>
+          <li class="flex justify-between">
+            <div class="inline-flex">
+              <div class="ml-3">
+                <p class="text-base font-medium text-gray-200"><%= humanized_money_with_symbol(@property.price)%> x <%=@nights%> nights</p>
+              </div>
+            </div>
+            <p class="text-base font-medium text-gray-200 pr-5">€<%= @sub_total %></p>
+          </li>
+          <li class="flex justify-between">
+          <div class="inline-flex">
+            <div class="ml-3">
+              <p class="text-base font-medium text-gray-200">Weekly Discount</p>
+            </div>
+          </div>
+          <p class="text-base font-medium text-gray-200 pr-5">€<%= @weekly_discount %></p>
+        </li>
+        <li class="flex justify-between">
+        <div class="inline-flex">
+          <div class="ml-3">
+            <p class="text-base font-medium text-gray-200">Service Fee</p>
+          </div>
+        </div>
+        <p class="text-base font-medium text-gray-200 pr-5">€<%= @service_fee %></p>
+      </li>
+      <li class="flex justify-between">
+      <div class="inline-flex">
+        <div class="ml-3">
+          <p class="text-base font-medium text-gray-200">Cleaning Fee</p>
+        </div>
+      </div>
+      <p class="text-base font-medium text-gray-200 pr-5">€<%= @cleaning_fee %></p>
+    </li>
+        </ul>
+        <div class="my-5 h-0.5 w-full bg-white bg-opacity-30"></div>
+        <div class="space-y-2">
+          <p class="flex justify-between text-lg font-bold text-gray-200"><span>Total:</span><span>€<%= @total %></span></p>
+        </div>
+      </div>
+      <div class="relative mt-10 text-gray-200">
+        <h3 class="mb-5 text-lg font-bold">Support</h3>
+        <p class="text-sm font-semibold">+351-912820845 <span class="font-light">(International)</span></p>
+        <p class="mt-1 text-sm font-semibold">support@onbooking.com <span class="font-light">(Email)</span></p>
+        <p class="mt-2 text-xs font-medium">Call us now for payment related issues</p>
+      </div>
+     
+    </div>
+  </div>
+</div>
