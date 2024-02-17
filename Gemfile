@@ -85,3 +85,5 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'sass-rails', '~> 6.0'
 gem 'stripe-rails'
 gem 'tailwindcss-rails', '~> 2.3'
+gem 'country_select', '~> 8.0'
+gem "pundit", "~> 2.3"

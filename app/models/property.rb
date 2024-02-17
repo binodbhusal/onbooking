@@ -1,10 +1,11 @@
 class Property < ApplicationRecord
+include Contriable
   validates :name, presence: true
   validates :headline, presence: true
   validates :description, presence: true
   validates :city, presence: true
   validates :state, presence: true
-  validates :country, presence: true
+  validates :country_code, presence: true
   validates :address1, presence: true
   has_many_attached :images
   has_many :reviews, as: :reviewable
@@ -17,8 +18,9 @@ class Property < ApplicationRecord
   CLEANING_FEE = 6000
   CLEANING_FEE_MONEY = Money.new(CLEANING_FEE)
   SERVICE_FEE_PERCENT = 0.8
+  delegate :full_name, to: :profile
   def address_info
-    "#{city} #{state}, #{country}".strip
+    "#{city} #{state}, #{country_name}".strip
   end
 
   geocoded_by :address
@@ -26,7 +28,7 @@ class Property < ApplicationRecord
 
   def address
     # [address1,address2, city, state, country].compact.join(', ')
-    [state, country].compact.join(', ')
+    [state, country_name].compact.join(', ')
   end
 
   def favrouted_by?(user)
@@ -44,4 +46,5 @@ class Property < ApplicationRecord
 
     next_reservation.checkin_date.strftime(date_format)..Date.today.end_of_year.strftime(date_format)
   end
+ 
 end

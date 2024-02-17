@@ -6,11 +6,13 @@ user_images = []
     avatar_url = Faker::LoremFlickr.image
     user_images << URI.parse(avatar_url).open
     end
-    user = User.create(email:"bb@gmail.com", password:"123456", first_name:"Binod", last_name:"Bhusal")
-    user.image.attach(io: user_images[0], filename: "#{user.full_name}.jpg")
+    user = User.create(email:"bb@gmail.com", password:"123456")
+    user.profile.update(first_name:"Binod", last_name:"Bhusal")
+    user.profile.image.attach(io: user_images[0], filename: "#{user.profile.full_name}.jpg")
     5.times do |i|
-    users = User.create(email: Faker::Internet.email, password:"password", first_name: Faker::Name.first_name, last_name:Faker::Name.last_name)
-    users.image.attach(io: user_images[i+1], filename: "#{users.full_name}.jpg")
+    users = User.create(email: Faker::Internet.email, password:"password")
+    users.profile.update(first_name: Faker::Name.first_name, last_name:Faker::Name.last_name)
+    users.profile.image.attach(io: user_images[i+1], filename: "#{users.profile.full_name}.jpg")
     end
     10.times do |i|
         property = Property.create(
@@ -20,7 +22,7 @@ user_images = []
             address1: Faker::Address.street_address,
             city: Faker::Address.city,
             state: Faker::Address.state,
-            country: Faker::Address.country,
+            country_code: Faker::Address.country_code,
             zip_code: Faker::Address.zip_code,
             price: Money.from_amount((25..100).to_a.sample)
         )

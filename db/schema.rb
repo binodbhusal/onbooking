@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_14_231851) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_17_115618) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,12 +76,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_14_231851) do
     t.string "address2"
     t.string "city"
     t.string "state"
-    t.string "country"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "zip_code"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "country_code"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -91,7 +93,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_14_231851) do
     t.text "description"
     t.string "city"
     t.string "state"
-    t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "address1"
@@ -103,6 +104,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_14_231851) do
     t.string "price_currency"
     t.integer "reviews_count"
     t.decimal "average_rating"
+    t.string "country_code"
     t.index ["latitude"], name: "index_properties_on_latitude"
     t.index ["longitude"], name: "index_properties_on_longitude"
   end
@@ -139,8 +141,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_14_231851) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "last_name"
     t.string "stripe_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

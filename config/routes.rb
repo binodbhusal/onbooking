@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :reservations, only: [:new], controller: "properties/reservations"
   end
   resources :reservation_payments, only: [:create]
+  resources :profiles, only: [:show, :update]
+  resources :accounts, only: [:show, :update]
+  resources :passwords, only: [:show, :update]
   namespace :api do 
   resources :users, only: [:show]
   resources :favroutes, only: [:create, :destroy]
