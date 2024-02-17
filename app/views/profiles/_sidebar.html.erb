@@ -1,0 +1,53 @@
+<div class="relative my-4 w-56 sm:hidden">
+      <input class="peer hidden" type="checkbox" name="select-1" id="select-1" />
+      <label for="select-1" class="flex w-full cursor-pointer select-none rounded-lg border p-2 px-3 text-sm text-gray-700 ring-blue-700 peer-checked:ring">Teams </label>
+      <svg xmlns="http://www.w3.org/2000/svg" class="pointer-events-none absolute right-0 top-3 ml-auto mr-5 h-4 text-slate-700 transition peer-checked:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+      </svg>
+      <ul class="max-h-0  flex-col overflow-hidden rounded-b-lg shadow-md transition-all duration-300 peer-checked:max-h-56 peer-checked:py-3">
+     
+      <li>
+      <%= link_to profile_path(current_user&.profile), class: "cursor-pointer px-3 py-2 text-sm text-slate-600 hover:bg-blue-700" do %>
+        Profile
+      <% end %>
+    </li>
+      
+    <li class="cursor-pointer px-3 py-2 text-sm text-slate-600 hover:bg-blue-700 hover:text-white">
+    <%= link_to new_user_session_path do %>
+      Accounts
+    <% end %>
+  </li>
+        <li class="cursor-pointer px-3 py-2 text-sm text-slate-600 hover:bg-blue-700 hover:text-white">Password</li>
+      </ul>
+    </div>
+<!-- large screen -->
+    <div class="pro-side col-span-2 hidden sm:block">
+    <ul>
+
+        <li>
+        <%= link_to profile_path(current_user&.profile), class: "text-gray-700 flex items-center gap-1 mt-5 cursor-pointer border-l-2 border-transparent px-2  font-semibold transition hover:border-l-[#ff395c] hover:bg-gray-100 py-2 #{'text-rose-500 bg-gray-100' if controller_name=='profiles'}" do %>
+         <%= heroicon "user-circle", options: {class: "w-6 h-6 text-gray-400 #{'text-rose-500' if controller_name=='profiles'}"} %>
+         <span>Profile</span>
+          <% end %>
+          </li>
+        
+    <li class="mt-5">
+        <%= link_to account_path(current_user), class: " flex items-center gap-1 mt-5 cursor-pointer border-l-2 border-transparent px-2  font-semibold transition hover:border-l-[#ff395c] hover:bg-gray-100 py-2 #{'bg-gray-100 text-rose-500' if controller_name=="accounts"}" do %>
+        <%= heroicon "cog-8-tooth", options: { class: "w-6 h-6 text-gray-400 #{'bg-gray-100 text-rose-500' if controller_name == 'accounts'}" } %>
+        <span>Accounts</span>
+        <% end %>
+      </li>
+      <li >
+      <%= link_to password_path(current_user), class: "active flex items-center gap-1 mt-5 cursor-pointer border-l-2 border-transparent px-2  py-2 font-semibold transition hover:border-l-rose-700 hover:bg-gray-200 #{'bg-gray-100 text-rose-500' if controller_name=="passwords"}" do %>
+        <%= heroicon "key", options: {class: "w-6 h-5 text-gray-400 #{'bg-gray-100 text-rose-500' if controller_name=="passwords"}"} %>
+          <span>Password</span>
+      <% end %>
+      <li >
+      <%= link_to new_user_session_path, class: "active flex items-center gap-1 mt-5 cursor-pointer border-l-2 border-transparent px-2 py-2 font-semibold transition hover:border-l-rose-700 hover:bg-gray-200 " do %>
+        <%= heroicon "rectangle-stack", options: {class: "w-6 h-5 text-gray-400"} %>
+          <span>Reservations & Payments</span>
+      <% end %>
+      </li>
+    </ul>
+    </div>
+  
