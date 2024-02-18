@@ -1,0 +1,41 @@
+<div class="col-span-8 overflow-hidden rounded-xl sm:bg-gray-50 sm:px-8 sm:shadow pb-10">
+      <div class="pt-4" >
+        <h1 class="py-2 text-2xl font-semibold">Reservations/Payments</h1>
+        <p class="text-gray-500 text-base"> Your reservations/payments information</p>
+      </div>
+      
+      <hr class="mt-4 mb-8" />
+      <div class="amx-auto mb-10 overflow-hidden rounded-lg border bg-white">
+        <table class="w-full">
+          <thead class="mb-6 bg-blue-100 py-1 text-center text-lg font-medium">
+            <td class="text-center font-semibold">Date</td>
+            <td class="text-center font-semibold">Description</td>
+            <td class="text-center font-semibold">Amount</td>
+            <td class="text-center font-semibold"></td>
+          </thead>
+          <tbody>
+          <%if @payments.any? %>
+          <% @payments.each do |payment| %>
+            <tr>
+            <td class="border-b py-2 text-center text-base"><%=payment.created_at.to_formatted_s(:utc_short_date)%></td>
+           <td class="border-b py-2 text-center text-base">
+          <%= "#{payment.reservation.property.name.capitalize} - #{payment.reservation.checkin_date.to_formatted_s(:utc_short_date)}" %>
+        </td>
+
+
+            <td class="border-b py-2 text-center text-base"><%= humanized_money_with_symbol(payment.total)%></td>
+            <td class="border-b py-2 text-center text-base">
+            <%= link_to "View property", property_path(payment.reservation.property), class:"text-base text-green-600 underline"%></td>
+          </tr>
+          <%end %>
+          <%else %>
+          <tr>
+          <td colspan="4" class="text-center text-base text-rose-500 py-4">You have no payment yet.</td>
+        </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      
+      </div>
+
