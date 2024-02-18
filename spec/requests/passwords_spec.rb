@@ -14,15 +14,15 @@ RSpec.describe 'Passwords', type: :request do
 
   describe 'PUT update' do
     it 'succeeds' do
-      user.update!(password: "pass123")
+      user.update!(password: 'pass123')
 
       put password_path(user), params: {
         password: {
-          password: "new_password",
+          password: 'new_password'
         }
       }
 
-      expect(user.reload.valid_password?("new_password")).to eq(true)
+      expect(user.reload.valid_password?('new_password')).to eq(true)
       expect(response).to be_redirect
     end
   end

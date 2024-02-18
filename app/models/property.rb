@@ -1,5 +1,5 @@
 class Property < ApplicationRecord
-include Contriable
+  include Contriable
   validates :name, presence: true
   validates :headline, presence: true
   validates :description, presence: true
@@ -46,5 +46,4 @@ include Contriable
 
     next_reservation.checkin_date.strftime(date_format)..Date.today.end_of_year.strftime(date_format)
   end
- 
 end

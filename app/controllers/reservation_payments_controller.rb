@@ -14,14 +14,14 @@ class ReservationPaymentsController < ApplicationController
     )
 
     reservation = Reservation.create(
-      property: property,
-      user: user,
+      property:,
+      user:,
       checkin_date: Date.strptime(payment_params[:checkin_date], '%m/%d/%Y'),
       checkout_date: Date.strptime(payment_params[:checkout_date], '%m/%d/%Y')
     )
 
-    payment = Payment.create(
-      reservation: reservation,
+    Payment.create(
+      reservation:,
       sub_total: Money.from_amount(BigDecimal(payment_params[:sub_total])),
       weekly_discount: Money.from_amount(BigDecimal(payment_params[:weekly_discount])),
       service_fee: Money.from_amount(BigDecimal(payment_params[:service_fee])),

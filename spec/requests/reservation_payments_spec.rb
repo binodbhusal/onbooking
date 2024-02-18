@@ -37,4 +37,3 @@ RSpec.describe 'ReservationPayments', type: :request do
     end
   end
 end
-

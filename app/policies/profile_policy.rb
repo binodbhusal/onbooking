@@ -6,8 +6,7 @@ class ProfilePolicy < ApplicationPolicy
     # end
   end
 
-  
   def update?
-    user.profile ==record
-    end
+    user.profile == record
+  end
 end

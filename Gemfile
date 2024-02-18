@@ -75,15 +75,15 @@ group :test do
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 6.0'
 end
+gem 'country_select', '~> 8.0'
 gem 'devise', '~> 4.9'
 gem 'faker'
 gem 'geocoder'
 gem 'heroicon'
 gem 'jsonapi-serializer'
 gem 'money-rails', '~> 1.12'
+gem 'pundit', '~> 2.3'
 gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'sass-rails', '~> 6.0'
 gem 'stripe-rails'
 gem 'tailwindcss-rails', '~> 2.3'
-gem 'country_select', '~> 8.0'
-gem "pundit", "~> 2.3"
