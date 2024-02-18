@@ -5,20 +5,23 @@ class ReservationPaymentsController < ApplicationController
       stripe_customer.id,
       { source: payment_params[:stripeToken] }
     )
+
     charge = Stripe::Charge.create(
       amount: Money.from_amount(BigDecimal(payment_params[:total])).cents,
       currency: 'eur',
       source: stripe_card.id,
       customer: stripe_customer.id
     )
+
     reservation = Reservation.create(
-      property:,
-      user:,
-      checkin_date: Date.strptime(payment_params[:checkin_date], Date::DATE_FORMATS[:utc_short_date]),
-      checkout_date: Date.strptime(payment_params[:checkout_date], Date::DATE_FORMATS[:utc_short_date])
+      property: property,
+      user: user,
+      checkin_date: Date.strptime(payment_params[:checkin_date], '%m/%d/%Y'),
+      checkout_date: Date.strptime(payment_params[:checkout_date], '%m/%d/%Y')
     )
-    Payment.create(
-      reservation:,
+
+    payment = Payment.create(
+      reservation: reservation,
       sub_total: Money.from_amount(BigDecimal(payment_params[:sub_total])),
       weekly_discount: Money.from_amount(BigDecimal(payment_params[:weekly_discount])),
       service_fee: Money.from_amount(BigDecimal(payment_params[:service_fee])),
@@ -26,6 +29,7 @@ class ReservationPaymentsController < ApplicationController
       total: Money.from_amount(BigDecimal(payment_params[:total])),
       stripe_id: charge.id
     )
+
     redirect_to root_path
   end
 

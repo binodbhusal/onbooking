@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :profiles, only: [:show, :update]
   resources :accounts, only: [:show, :update]
   resources :passwords, only: [:show, :update]
+  resources :payments, only: [:index]
   namespace :api do 
   resources :users, only: [:show]
   resources :favroutes, only: [:create, :destroy]

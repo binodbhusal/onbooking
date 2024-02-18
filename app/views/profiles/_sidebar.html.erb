@@ -38,13 +38,13 @@
         <% end %>
       </li>
       <li >
-      <%= link_to password_path(current_user), class: "active flex items-center gap-1 mt-5 cursor-pointer border-l-2 border-transparent px-2  py-2 font-semibold transition hover:border-l-rose-700 hover:bg-gray-200 #{'bg-gray-100 text-rose-500' if controller_name=="passwords"}" do %>
+      <%= link_to password_path(current_user), class: "flex items-center gap-1 mt-5 cursor-pointer border-l-2 border-transparent px-2  py-2 font-semibold transition hover:border-l-rose-500 hover:bg-gray-100 #{'bg-gray-100 text-rose-500' if controller_name=="passwords"}" do %>
         <%= heroicon "key", options: {class: "w-6 h-5 text-gray-400 #{'bg-gray-100 text-rose-500' if controller_name=="passwords"}"} %>
           <span>Password</span>
       <% end %>
       <li >
-      <%= link_to new_user_session_path, class: "active flex items-center gap-1 mt-5 cursor-pointer border-l-2 border-transparent px-2 py-2 font-semibold transition hover:border-l-rose-700 hover:bg-gray-200 " do %>
-        <%= heroicon "rectangle-stack", options: {class: "w-6 h-5 text-gray-400"} %>
+      <%= link_to payments_path, class: "flex items-center gap-1 mt-5 cursor-pointer border-l-2 border-transparent px-2 py-2 font-semibold transition hover:border-l-rose-500 hover:bg-gray-100 #{'bg-gray-100 text-rose-500' if controller_name=="payments"}" do %>
+        <%= heroicon "rectangle-stack", options: {class: "w-6 h-5 text-gray-400 #{'bg-gray-100 text-rose-500' if controller_name=="payments"}"} %>
           <span>Reservations & Payments</span>
       <% end %>
       </li>

@@ -20,7 +20,7 @@ object-position:left; height:130px; width:130px;" />
 <%= heroicon "bars-3", options:{class:"h-6"} %>
 
 
-<%= image_tag(current_user&.profile&.image || default_profile_image, class: "h-6 rounded-full") %>
+<%= image_tag(current_user&.profile&.image.present? ? current_user&.profile&.image : default_profile_image, class: "h-6 rounded-full") %>
 </button>
 <div class= "hidden origin-top-right absolute right-8 md:right-12 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus: out top-16"
 id="user-dropdown-menu"
