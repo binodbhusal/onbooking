@@ -16,6 +16,7 @@ user_images = []
     end
     10.times do |i|
         property = Property.create(
+            user:user
             name: Faker::Lorem.word,
             headline: Faker::Lorem.sentence,
             description: Faker::Lorem.paragraphs(number:35).join(" "),

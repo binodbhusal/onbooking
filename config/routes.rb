@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
+ 
   root "home#index"
   resources :properties, only: [:show] do
     resources :reservations, only: [:new], controller: "properties/reservations"
@@ -16,5 +14,11 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :favroutes, only: [:create, :destroy]
   get "/users_by_email" => "users_by_emails#show", as: :users_by_email
+  end
+  put '/hostify/:user_id', to: 'hostify#update', as: 'hostify'
+  namespace :host do
+    get '/dashboard '=> 'dashboard#index', as: :dashboard
+    resources :properties, only: [:new, :create]
+    resources :payments, only: [:index]
   end
 end

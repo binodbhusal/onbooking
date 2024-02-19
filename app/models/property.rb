@@ -14,6 +14,7 @@ class Property < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_many :reserved_users, through: :reservations, source: :user
   has_many :payments, through: :reservations
+  belongs_to :user
   monetize :price_cents, allow_nil: true
   CLEANING_FEE = 6000
   CLEANING_FEE_MONEY = Money.new(CLEANING_FEE)

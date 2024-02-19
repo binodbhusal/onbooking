@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :property do
+    user
     name { 'Mytest' }
     headline { 'Mytest' }
     description { 'Mytest' }

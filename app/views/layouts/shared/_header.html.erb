@@ -39,7 +39,6 @@ data-transition-leave-end="transform opacity-0 scale-95"
 <% if user_signed_in? %>
     <%= link_to "My profile", profile_path(current_user.profile), class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
     <%= link_to "Log out", destroy_user_session_path, data:{"turbo-method": :delete}, class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
-    <%= link_to "Host your home", "#", class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
     <%else %>
 <a 
 data-header-target="userAuthLinks" 
@@ -63,8 +62,15 @@ Log in
 </div>
 
 <div class="p-1" role="none">
-<a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" rele="menuitem" tabindex="-1" id="user-menu-item-3">Host an experience</a>
-<a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" rele="menuitem" tabindex="-1" id="user-menu-item-3">Help</a>
+<% if user_signed_in? && !current_user.host? %>
+<%= link_to "Host your home", hostify_path(user_id: current_user.id), data: {"turbo_method": :put}, class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+<% elsif user_signed_in? && current_user.host? %>
+<%= link_to "Host Dashboard", host_dashboard_path(current_user), class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+
+<% elsif !user_signed_in?%>
+<%= link_to "Host your home", new_user_session_path, class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+<%end%>
+
 </div>
 </div>
 </div>

@@ -17,5 +17,6 @@ RSpec.describe Property, type: :model do
     it { should have_many(:favrouted_users).through(:favroutes).source(:user) }
     it { should have_many(:reserved_users).through(:reservations).source(:user) }
     it { should have_many(:payments).through(:reservations) }
+    it { should belong_to(:user) }
   end
 end
