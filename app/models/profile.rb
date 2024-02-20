@@ -1,5 +1,5 @@
 class Profile < ApplicationRecord
-  include Contriable
+  include Countryable
   belongs_to :user
   has_one_attached :image
 

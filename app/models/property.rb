@@ -1,5 +1,5 @@
 class Property < ApplicationRecord
-  include Contriable
+  include Countryable
   validates :name, presence: true
   validates :headline, presence: true
   validates :description, presence: true
@@ -16,6 +16,16 @@ class Property < ApplicationRecord
   has_many :payments, through: :reservations
   belongs_to :user
   monetize :price_cents, allow_nil: true
+  scope :city, ->(city) { where("lower(city) like?", "%#{city.downcase if city.present?}%")}
+  scope :country_code, ->(country_code) { where("lower(country_code) like?", "%#{country_code.downcase if country_code.present?}%")}
+  
+  scope :between_dates, ->(checkin, checkout) do
+    joins(:reservations)
+      .where.not("reservations.checkout_date < ?", Date.strptime(checkin, Date::DATE_FORMATS[:utc_short_date]))
+      .where.not("reservations.checkin_date > ?", Date.strptime(checkout, Date::DATE_FORMATS[:utc_short_date]))
+  end
+  
+
   CLEANING_FEE = 6000
   CLEANING_FEE_MONEY = Money.new(CLEANING_FEE)
   SERVICE_FEE_PERCENT = 0.8

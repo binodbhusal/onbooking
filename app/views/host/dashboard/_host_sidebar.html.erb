@@ -20,7 +20,7 @@
     <ul>
 
         <li>
-        <%= link_to host_dashboard_path(current_user), class: "text-gray-700 flex items-center gap-1 mt-5 cursor-pointer border-l-2 border-transparent px-2  font-semibold transition hover:border-l-[#ff395c] hover:bg-gray-100 py-2 #{'text-rose-500 bg-gray-100' if controller_name=='dashboard'}" do %>
+        <%= link_to host_dashboard_path(current_user), class: "text-gray-700 flex items-center gap-1  cursor-pointer border-l-2 border-transparent px-2  font-semibold transition hover:border-l-[#ff395c] hover:bg-gray-100 py-2 #{'text-rose-500 bg-gray-100' if controller_name=='dashboard'}" do %>
          <%= heroicon "home", options: {class: "w-6 h-6 text-gray-400 #{'text-rose-500' if controller_name=='dashboard'}"} %>
          <span>Properties</span>
           <% end %>

@@ -9,7 +9,12 @@ object-position:left; height:130px; width:130px;" />
 </div>
 <!-- Center Section  -->
 <div class="flex items-center md:border-2 rounded-full md:border-2 md:shadow-sm py-2 h-12 hover:bg-gray-100 bg-gray-200 md:bg-transparent">
-<input placeholder="Start your Search" class="flex-grow pl-5 bg-transparent focus:outline-none border-none  text-gray-600 text-sm placeholder-gray-400  h-8" />
+<input 
+placeholder="Start your Search" 
+class="flex-grow pl-5 bg-transparent focus:outline-none border-none  text-gray-600 text-sm placeholder-gray-400  h-8"
+data-header-target="search"
+data-target-id="search-form-modal"
+/>
 <%= heroicon "magnifying-glass", options: { class: "hidden h-8 bg-[#ff395c] rounded-full p-2 cursor-pointer text-white  md:mx-2 md:inline-flex" } %>
 </div>
 <!-- Right Section  -->
@@ -75,4 +80,6 @@ Log in
 </div>
 </div>
 <%= render 'shared/modal', modal_trigger_id:"user-auth-modal", modal_content: 'shared/user_auth_form' %>
+<%= render 'shared/modal', modal_trigger_id:"search-form-modal", modal_content: 'shared/search_bar_modal' %>
+
 </header>

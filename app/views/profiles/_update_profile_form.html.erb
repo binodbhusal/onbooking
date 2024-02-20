@@ -1,13 +1,11 @@
 <div class="col-span-8 overflow-hidden rounded-xl sm:bg-gray-50 sm:px-8 sm:shadow pb-10">
       <div class="pt-4" >
-        <h1 class="py-2 text-2xl font-semibold">Update profile</h1>
-        <p class="text-gray-500 text-base">Update your profile information</p>
+        <h1 class="py-2 text-2xl text-gray-700 font-semibold">Update profile</h1>
+        <p class="text-gray-500 text-base">Change your profile information.</p>
       </div>
-      
-      <hr class="mt-4 mb-8" />
       <%= form_with model: @profile, local: true, url: profile_path(@profile), html: { multipart: true } do |f| %>
         <div class="space-y-1">
-        <div class="rounded-md border bg-white">
+        <div >
           <div class="flex w-full items-center px-6 py-2">
            
           </div>
@@ -15,46 +13,43 @@
           <div class="grid lg:grid-cols-2 gap-3">
           <div>
           <%= f.label :first_name, class:"block"%>
-            <%= f.text_field :first_name, class:"w-full rounded-md border py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
+            <%= f.text_field :first_name, class:"bg-transparent w-full rounded-md border border-gray-400 py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
             </div>
             <div>
             <%= f.label :last_name, class:"block"%>
-            <%= f.text_field :last_name, class:"w-full rounded-md border py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
+            <%= f.text_field :last_name, class:"bg-transparent w-full rounded-md border border-gray-400 py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
             </div>
             <div>
             <%= f.label :Street_address, class:"block"%>
-            <%= f.text_field :address1, class:"w-full rounded-md border py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
+            <%= f.text_field :address1, class:"bg-transparent w-full rounded-md border border-gray-400 py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
             </div>
             <div class="grid lg:grid-cols-2 gap-3">
             <div>
             <%= f.label :City, class:"block"%>
-            <%= f.text_field :city, class:"w-full rounded-md border py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
+            <%= f.text_field :city, class:"bg-transparent w-full rounded-md border border-gray-400 py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
             </div>
             <div>
             <%= f.label :State, class:"block"%>
-            <%= f.text_field :state, class:"w-full rounded-md border py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
+            <%= f.text_field :state, class:"bg-transparent w-full rounded-md border border-gray-400 py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
             </div>
           </div>
           <div>
             <%= f.label :"Zip_/_postal_code", class:"block"%>
-            <%= f.text_field :zip_code, class:"w-full rounded-md border py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
+            <%= f.text_field :zip_code, class:"bg-transparent w-full rounded-md border border-gray-400 py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
             </div>
             <div>
             <%= f.label :country, class:"block"%>
-            <%= f.country_select :country_code,{priority_countries: ["PT", "US", "CA"],sort_provided: false}, class:"w-full rounded-md border py-2 px-2 outline-none ring-blue-600 focus:ring-1"%>
+            <%= f.country_select :country_code,{priority_countries: ["PT", "US", "CA"],sort_provided: false}, class:"bg-transparent w-full rounded-md border border-gray-400 py-2 px-2 outline-none ring-blue-600 focus:ring-1"%>
             </div>
-            <div>
-            <%= f.label :Profile_image, class: "block" %>
-            <%= f.file_field :image, class:"relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
+            <div class="block">
+            <%= f.label :Profile_image, class: "block mb-1" %>
+            <%= f.file_field :image, class:"relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-gray-400 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-blue-500 file:px-3 file:py-[0.32rem] file:text-white file:transition file:duration-150 file:ease-in-out file:cursor-pointer file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-blue-600 focus:border-primary focus:text-white focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
             %>
-            </div>
-            <div class="flex justify-end">
-            <button type="submit" class="mt-4  rounded-lg bg-rose-500 px-10 py-2 text-white">Save</button>
-
-            </div>
-           
           </div>
-       
+          </div>
+          <div class="flex justify-end">
+          <button type="submit" class="rounded-lg bg-rose-500 px-10 py-2 text-white hover:bg-rose-600">Save</button>
+          </div>
         
         </div>
   <% end %>

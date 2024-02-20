@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
  
   root "home#index"
+  namespace :properties do
+    resources :search, only: [:index]
+  end
   resources :properties, only: [:show] do
     resources :reservations, only: [:new], controller: "properties/reservations"
   end
@@ -21,4 +24,5 @@ Rails.application.routes.draw do
     resources :properties, only: [:new, :create]
     resources :payments, only: [:index]
   end
+ 
 end
