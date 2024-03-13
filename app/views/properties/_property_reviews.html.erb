@@ -1,7 +1,7 @@
 <div class="bg-white">
-  <div class="max-w-2xl mx-auto py-16 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:py-16">
+  <div class="max-w-2xl mx-auto py-16 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:py-12">
     <div class="lg:col-span-4">
-      <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">Customer Reviews </h2>
+      <h2 class="text-2xl font-medium tracking-tight text-gray-700">Customer Reviews </h2>
       <div class="mt-3 flex items-center">
         <% property_star_classes = ["text-gray-300", "text-gray-300","text-gray-300","text-gray-300","text-gray-300"] 
           @property.average_rating&.round(0)&.times do |i|
@@ -11,7 +11,7 @@
         <% property_star_classes.each do |star_class| %>
           <%= heroicon "star", options:{ class: "#{star_class} h-7 w-7" } %>
         <% end %>
-        <p class="ml-3">Based on <%= @property.reviews_count %> reviews </p>
+        <p class="ml-3">Based on <%= @property.reviews_count&.positive? ? @property.reviews_count : 0 %> reviews </p>
       </div>
       <!-- reviews data -->
       <div class="mt-6">
@@ -51,7 +51,7 @@
     <%= image_tag review.user.profile.image, alt:review.user.profile.full_name, class:"h-16 w-16 rounded-full mb-4"%>
     <%end%>
     <div class="ml-4">
-    <h4 class="text-sm font-bold text-grya-900"><%=review.user.profile.full_name%> </h4>
+    <h4 class="text-sm font-semibold text-gray-700"><%=review.user.profile.full_name%> </h4>
     <div class="mt-1 flex items-center">
     <% review_star_classes = ["text-gray-300", "text-gray-300","text-gray-300","text-gray-300","text-gray-300"] 
           review.rating.times do |i|

@@ -5,11 +5,12 @@
  </div>
  <div class="flex flex-cols font-medium">
 <%= heroicon "star", options:{class: "h-5 relative cursor-pointer inline-block mr-1", style:"top:1px;"} %>
-<%= @property.average_rating&.round(2) %> - <%=@property.reviews_count %> reviews
+<%= @property.average_rating&.round(2) %> - <%=@property.reviews_count&.positive? ? @property.reviews_count : 0 %> reviews
 </div>
 <div class=" border-t border-b flex py-4 items-center my-8">
-<img src ="https://cdn.pixabay.com/photo/2014/04/02/17/07/user-307993_1280.png" class="h-10 w-10 rounded-full">
-<h1 class="text-md font-medium tracking-tight text-gray-900 ml-2">Entire rental unit hosted by <%= @user&.profile&.full_name%></h1>
+<%= image_tag(@property.user&.profile&.image.present? ? @property.user&.profile&.image : profile_image, class: "h-12 w-12 rounded-full object-cover") %>
+
+<h1 class="text-lg font-medium tracking-tight text-gray-900 ml-2">Entire rental unit hosted by <%= @property&.user&.profile&.full_name%></h1>
 </div>
 <div class="space-y-6 mb-8 text-lg border-b pb-6">
 <div class="flex space-x-4 items-center">
