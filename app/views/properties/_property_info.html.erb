@@ -1,6 +1,34 @@
 <!--Property description and others-->
-<h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">Entire rental unit hosted by Binod</h1>
-<p class="text-base text-gray-900 pb-4"><%= truncate @property.description, length:500%></p>
+<div class="">
+<div class="mt-4 text-gray-900 text-lg lg:text-xl font-medium">
+ <%= @property.address_info %>
+ </div>
+ <div class="flex flex-cols font-medium">
+<%= heroicon "star", options:{class: "h-5 relative cursor-pointer inline-block mr-1", style:"top:1px;"} %>
+<%= @property.average_rating&.round(2) %> - <%=@property.reviews_count %> reviews
+</div>
+<div class=" border-t border-b flex py-4 items-center my-8">
+<img src ="https://cdn.pixabay.com/photo/2014/04/02/17/07/user-307993_1280.png" class="h-10 w-10 rounded-full">
+<h1 class="text-md font-medium tracking-tight text-gray-900 ml-2">Entire rental unit hosted by <%= @user&.profile&.full_name%></h1>
+</div>
+<div class="space-y-6 mb-8 text-lg border-b pb-6">
+<div class="flex space-x-4 items-center">
+<%= heroicon "clipboard-document", options:{class: "h-7 relative cursor-pointer inline-block mr-1 text-gray-300"} %>
+<p class="text-gray-900 font-medium text-base">Free cancellation for 48 hours</p>
+</div>
+<div class="flex space-x-4 items-center">
+<%= heroicon "building-office", options:{class: "h-7 relative cursor-pointer inline-block mr-1 text-gray-300"} %>
+<p class="text-gray-900 font-medium text-base">Self check-in</p>
+</div>
+<div class="flex space-x-4 items-center">
+<%= heroicon "queue-list", options:{class: "h-7 relative cursor-pointer inline-block mr-1 text-gray-300"} %>
+<p class="text-gray-900 font-medium text-base">Park for free</p>
+</div>
+</div>
+</div>
+<div class="border-b pb-8">
+<p class="text-base text-center lg:text-left text-gray-600 pb-4"><%= truncate @property.description, length:500%></p>
 <% if @property.description.length > 500 %>
-<%= link_to "Show more >",'#', class:"text-lg text-blue-500 font-medium underline", data: { action: "property#showDescription"} %>
+<%= link_to "Show more >",'#', class:"text-lg text-gray-900 font-medium underline", data: { action: "property#showDescription"} %>
 <% end %>
+</div>
