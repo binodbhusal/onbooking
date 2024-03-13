@@ -13,11 +13,13 @@ export default class extends Controller {
     if(modalBackdrop && modalTriggerId==='share-link-modal'){
       modalBackdrop.style.marginTop='100px'
     }
-    // if(modalBackdrop && modalTriggerId ==='property-description-modal'){
-    // modalBackdrop.style.overscrollBehaviorY='visible'
-    // }
-    // enter(document.getElementById('modal-container'))
-    // enter(document.getElementById('modal-backdrop'))
+    if(modalBackdrop && modalTriggerId ==='property-description-modal'){
+    modalBackdrop.style.height='600px'
+    modalBackdrop.style.overflowY= 'scroll'
+    modalBackdrop.style.scrollBehavior='smooth'
+    }
+    enter(document.getElementById('modal-container'))
+    enter(document.getElementById('modal-backdrop'))
     modalContainer.addEventListener('click', this.closeModal.bind(this))
     
     this.btnCloseTarget.addEventListener('click', () => {

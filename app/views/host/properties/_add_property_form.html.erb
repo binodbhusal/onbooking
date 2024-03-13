@@ -15,55 +15,52 @@
                     <div class="grid lg:grid-cols-2 gap-3">
                     <div class="col-span-2">
                     <%= f.label :property_name, class:"block"%>
-                      <%= f.text_field :name, class:"w-full rounded-md border py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
+                      <%= f.text_field :name, class:"w-full rounded-md border border-gray-400 py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
                       </div>
                       <div class="col-span-2">
                       <%= f.label :headline, class:"block"%>
-                      <%= f.text_field :headline, class:"w-full rounded-md border py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
+                      <%= f.text_field :headline, class:"w-full rounded-md border border-gray-400 py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
                       </div>
                       <div class="col-span-2">
                       <%= f.label :Description, class:"block"%>
-                      <%= f.text_area :description, class:"w-full rounded-md border py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
+                      <%= f.text_area :description, class:"w-full rounded-md border border-gray-400 py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
                       </div>
                       <div class="col-span-2">
                       <%= f.label :images, class: "block" %>
-                      <%= f.file_field :images, class:"relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
+                      <%= f.file_field :images, class:"relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-gray-400 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
                       %>
                       </div>
                       <div class="col-span-2">
                       <%= f.label :street_address, class:"block"%>
-                      <%= f.text_field :address1, class:"w-full rounded-md border py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
+                      <%= f.text_field :address1, class:"w-full rounded-md border border-gray-400 py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
                       </div>
                       <div class="col-span-2">
                       <%= f.label :Additional_address, class:"block"%>
-                      <%= f.text_field :address2, class:"w-full rounded-md border py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
+                      <%= f.text_field :address2, class:"w-full rounded-md border border-gray-400 py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
                       </div>
 
                       <div>
                       <%= f.label :City, class:"block"%>
-                      <%= f.text_field :city, class:"w-full rounded-md border py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
+                      <%= f.text_field :city, class:"w-full rounded-md border border-gray-400 py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
                       </div>
                       <div>
                       <%= f.label :State, class:"block"%>
-                      <%= f.text_field :state, class:"w-full rounded-md border py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
+                      <%= f.text_field :state, class:"w-full rounded-md border border-gray-400 py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
                       </div>
 
                     <div>
                       <%= f.label :"Zip_/_postal_code", class:"block"%>
-                      <%= f.text_field :zip_code, class:"w-full rounded-md border py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
+                      <%= f.text_field :zip_code, class:"w-full rounded-md border border-gray-400 py-2 px-2  outline-none ring-blue-600 focus:ring-1"%>
                       </div>
                       <div>
                       <%= f.label :country, class:"block"%>
-                      <%= f.country_select :country_code,{priority_countries: ["PT", "US", "CA"],sort_provided: false}, class:"w-full rounded-md border py-2 px-2 outline-none ring-blue-600 focus:ring-1"%>
-                      </div>
-                      
-                      <div class="flex justify-end">
-                      <button type="submit" class="mt-4  rounded-lg bg-rose-500 px-10 py-2 text-white">Save</button>
-          
+                      <%= f.country_select :country_code,{priority_countries: ["PT", "US", "CA"],sort_provided: false}, class:"w-full rounded-md border border-gray-400 py-2 px-2 outline-none ring-blue-600 focus:ring-1"%>
                       </div>
                      
                     </div>
-                 
+                    <div class="flex justify-end">
+                    <button type="submit" class="mt-4  rounded-lg bg-rose-500 px-10 py-2 text-white hover:bg-rose-600">Save</button>
+                    </div>
                   
                   </div>
           
