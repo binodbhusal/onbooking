@@ -63,7 +63,7 @@ OnBooking is a comprehensive accommodation booking platform like Airbnb designed
 1. <strong>User Authentication:</strong> The system allows users to create accounts and log in.
 2. <strong>Property or Accommodation  Listings:</strong> Similar to Airbnb, OnBooking boasts an extensive database of accommodation listings
 3. <strong>Reservation Management:</strong> Users can view available accommodations at different locations and make reservations.
-4. <strong>Host management:<strong> Users can list and host their properties with host dashboard, 
+4. <strong>Host management:</strong> Users can list and host their properties with host dashboard, 
 5. <strong>Payment gateways:</strong> Secure stripe payment gateway integration for safe and reliable transactions
 6. <strong>Review and Rating System</strong>
 7. <strong>Responsive design </strong>
