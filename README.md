@@ -69,7 +69,7 @@ OnBooking is a comprehensive accommodation booking platform like Airbnb designed
 7. <strong>Responsive design </strong>
 8. <strong>Search Filters:</strong> OnBooking provides search filters that enable users to narrow down their options based on criteria such as location, price range, amenities, and more.
 9. <strong>Reservations/Payments listing of user</strong>
-10. <sstrong>User profile update feature</strong>
+10. <strong>User profile update feature</strong>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
