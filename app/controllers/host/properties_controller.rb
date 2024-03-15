@@ -19,8 +19,8 @@ module Host
     private
 
     def property_params
-      params.require(:property).permit(:name, :headline, :description, :city, :state, :address1, :address2,
-                                       :zip_code, :country_code, :images)
+      params.require(:property).permit(:name, :headline, :price_cents, :description, :city, :state,
+                                       :address1, :address2, :zip_code, :country_code, :images)
     end
   end
 end
