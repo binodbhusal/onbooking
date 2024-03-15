@@ -45,15 +45,8 @@ data-transition-leave-end="transform opacity-0 scale-95"
     <%= link_to "My profile", profile_path(current_user.profile), class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
     <%= link_to "Log out", destroy_user_session_path, data:{"turbo-method": :delete}, class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
     <%else %>
-<a 
-data-header-target="userAuthLinks" 
-class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" 
-role="menuitem" tabindex="-1" 
-id="user-menu-item-0"
-href="#"
->
-Sign up
- </a>
+<%= link_to "Sign up", new_user_registration_path, class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"  %>
+
 <a data-header-target="userAuthLinks" 
 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" 
 role="menuitem" 
