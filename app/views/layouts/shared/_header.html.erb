@@ -23,8 +23,6 @@ data-target-id="search-form-modal"
 <%= heroicon "globe-alt", options:{class: "h-6 cursor-pointer"} %>
 <button data-header-target="openUserMenu" class="flex items-center border-2 rounded-full p-2 space-x-2">
 <%= heroicon "bars-3", options:{class:"h-6"} %>
-
-
 <%= image_tag(current_user&.profile&.image.present? ? current_user&.profile&.image : default_profile_image, class: "h-6 rounded-full") %>
 </button>
 <div class= "hidden origin-top-right absolute right-8 md:right-12 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus: out top-16"
@@ -46,7 +44,6 @@ data-transition-leave-end="transform opacity-0 scale-95"
     <%= link_to "Log out", destroy_user_session_path, data:{"turbo-method": :delete}, class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
     <%else %>
 <%= link_to "Sign up", new_user_registration_path, class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"  %>
-
 <a data-header-target="userAuthLinks" 
 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" 
 role="menuitem" 
