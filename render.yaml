@@ -1,14 +1,15 @@
 databases:
-  - name: BudgetApp
-    databaseName: budgetapp_v9f8
-    user: budgetapp_v9f8_user
+  - name: galaxy
+    databaseName: galaxy_28u1
+    user: galaxy_28u1_user
 
 services:
   - type: web
     name: onbooking
     runtime: ruby
+    plan: free
     buildCommand: "./bin/render-build.sh"
-    startCommand: "bundle exec puma -C config/puma.rb"
+    startCommand: "bundle exec rails server"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -16,3 +17,5 @@ services:
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
+         - key: WEB_CONCURRENCY
+        value: 2
