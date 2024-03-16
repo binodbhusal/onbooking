@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_18_223458) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_16_150322) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,15 +56,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_18_223458) do
     t.bigint "reservation_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "sub_total_cents"
+    t.bigint "sub_total_cents"
     t.string "sub_total_currency"
-    t.integer "weekly_discount_cents"
+    t.bigint "weekly_discount_cents"
     t.string "weekly_discount_currency"
-    t.integer "service_fee_cents"
+    t.bigint "service_fee_cents"
     t.string "service_fee_currency"
-    t.integer "cleaning_fee_cents"
+    t.bigint "cleaning_fee_cents"
     t.string "cleaning_fee_currency"
-    t.integer "total_cents"
+    t.bigint "total_cents"
     t.string "total_currency"
     t.string "stripe_id"
     t.index ["reservation_id"], name: "index_payments_on_reservation_id"
@@ -100,10 +100,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_18_223458) do
     t.float "latitude"
     t.float "longitude"
     t.string "zip_code"
-    t.integer "price_cents"
+    t.bigint "price_cents"
     t.string "price_currency"
     t.integer "reviews_count"
-    t.decimal "average_rating"
+    t.decimal "average_rating", precision: 10, scale: 2
     t.string "country_code"
     t.bigint "user_id", null: false
     t.index ["latitude"], name: "index_properties_on_latitude"
@@ -125,7 +125,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_18_223458) do
   create_table "reviews", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.integer "rating"
+    t.bigint "rating"
     t.bigint "reviewable_id"
     t.string "reviewable_type"
     t.datetime "created_at", null: false

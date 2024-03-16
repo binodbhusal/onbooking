@@ -1,5 +1,4 @@
 class Property < ApplicationRecord
-  before_save :convert_price_to_cents
   include Countryable
   validates :name, presence: true
   validates :headline, presence: true
@@ -36,9 +35,6 @@ class Property < ApplicationRecord
     "#{city} #{state}, #{country_name}".strip
   end
 
-  def convert_price_to_cents
-    self.price_cents = (price_cents.to_f * 100).to_i
-  end
   geocoded_by :address
   after_validation :geocode, if: -> { latitude.blank? && longitude.blank? }
 

@@ -9,6 +9,8 @@ module Host
     def create
       authorize current_user, policy_class: HostPolicy
       @property = current_user.properties.new(property_params)
+      price_in_euro = params[:property][:price_cents].to_f
+      @property.price_cents = Money.from_amount(price_in_euro, 'EUR').cents
       if @property.save
         redirect_to host_dashboard_path
       else

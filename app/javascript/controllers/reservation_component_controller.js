@@ -7,12 +7,9 @@ static targets = ['checkin', 'checkout', 'numOfNights',
 'nightlyTotal', 'serviceFee', 'total', 'weeklyDiscount', 'cleaningFee']
 
 connect() {
-console.log('i ma reservation component connected')
-console.log('data nighly price', this.element.dataset.nightlyPrice)
+  this.updateTotal()
 console.log(Datepicker)
 const defaultCheckinDate = this.element.dataset.defaultCheckinDate;
-console.log('default checkin date:', defaultCheckinDate)
-console.log('checkinnDate:', defaultCheckinDate)
 const checkinDatepicker = new Datepicker(this.checkinTarget, {
   minDate: new Date(defaultCheckinDate),
 });
@@ -27,6 +24,7 @@ this.checkinTarget.addEventListener('changeDate', (e) => {
   minDate: date
  });
  this.updateNightsTotal()
+ this.updateTotal()
 
 });
 this.checkoutTarget.addEventListener('changeDate', (e) => {
@@ -36,17 +34,17 @@ this.checkoutTarget.addEventListener('changeDate', (e) => {
    maxDate: date
   });
   this.updateNightsTotal()
+  this.updateTotal()
 });
 }
 numberofNights() {
   if (isEmpty(this.checkinTarget.value) || isEmpty(this.checkoutTarget.value)) {
-    return 0;
+    return 1;
   }
   const oneDay = 24 * 60 * 60 * 1000
   const startDate = new Date(this.checkinTarget.value)
   const endDate = new Date (this.checkoutTarget.value)
   const nights = Math.round(Math.abs(startDate - endDate)/oneDay)
-  console.log('number of nights:',nights)
   return nights
 }
 updateNightsTotal() {
@@ -54,11 +52,12 @@ updateNightsTotal() {
   this.nightlyTotalTarget.textContent = (this.calculateNightsTotal())
   this.updateWeeklyDiscount()
   this.updateServiceFee(this.calculateNightsTotal())
+  this.updateTotal() 
+
 }
 calculateNightsTotal() {
   const nightlyPrice = this.element.dataset.nightlyPrice
   return (nightlyPrice * this.numberofNights()).toFixed(2) 
-
 }
 calculateWeeklyDiscount () {
  return (this.calculateNightsTotal() * 0.06).toFixed(2)
@@ -83,8 +82,11 @@ calculateTotal() {
   return total.toFixed(2);
 }
 updateTotal() {
-this.totalTarget.textContent = (this.calculateTotal())
+  const totalValue = this.calculateTotal();
+  const formattedTotal = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'EUR' }).format(totalValue);
+  this.totalTarget.textContent = formattedTotal;
 }
+
 buildReservationParams() {
   const params = {
     checkin_date: this.checkinTarget.value,

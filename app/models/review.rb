@@ -8,6 +8,9 @@ class Review < ApplicationRecord
   after_commit :update_average_reviews_rating, on: %i[create update]
 
   def update_average_reviews_rating
-    reviewable.update!(average_rating: reviewable.reviews.average(:rating))
+    average_rating = reviewable.reviews.average(:rating)
+    return unless average_rating.present?
+
+    reviewable.update!(average_rating:)
   end
 end
