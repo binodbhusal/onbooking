@@ -30,7 +30,7 @@ user_images = []
             price_cents: price_cents,
             price_currency: "EUR",
         )
-        property.images.attach(io: File.open(Rails.root.join("app", "assets", "images", "property#{i+1}.webp")), filename: "#{property.name}.png")
+        property.images.attach(io: File.open(Rails.root.join("app", "assets", "images", "property#{i+1}.webp")), filename: "#{property.name}.webp")
         (1..5).to_a.sample.times do 
             rating = rand(1..5)
             Review.create(
