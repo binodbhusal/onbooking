@@ -7,7 +7,7 @@ class Property < ApplicationRecord
   validates :state, presence: true
   validates :country_code, presence: true
   validates :address1, presence: true
-  has_many_attached :images
+  has_many_attached :images, service: :google
   has_many :reviews, as: :reviewable
   has_many :favroutes, dependent: :destroy
   has_many :favrouted_users, through: :favroutes, source: :user

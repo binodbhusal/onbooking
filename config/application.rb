@@ -19,5 +19,17 @@ module Onbooking
     # config.eager_load_paths << Rails.root.join("extras")
     config.stripe.secret_key = ENV["STRIPE_SECRET_KEY"]
     config.stripe.publishable_key = ENV["STRIPE_PUBLISHABLE_KEY"]
+    # config/application.rb
+
+# Load the GCS service account key file from the environment variable
+if ENV['GOOGLE_APPLICATION_CREDENTIALS'].present?
+  config.google_cloud_storage = {
+    service: 'GCS',
+    credentials: JSON.parse(ENV['GOOGLE_APPLICATION_CREDENTIALS']),
+    project: 'onbooking',
+    bucket: 'onbooking_bucket'
+  }
+end
+
   end
 end

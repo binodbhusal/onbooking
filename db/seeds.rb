@@ -7,13 +7,13 @@ user_images = []
     user_images << URI.parse(avatar_url).open
     end
     user = User.create(email:"bb@gmail.com", password:"123456")
-    profile = Profile.create(user: user, first_name: "Binod", last_name: "Bhusal")
+    user.profile.update(first_name: "Binod", last_name: "Bhusal")
     user.profile.image.attach(io: user_images[0], filename: "#{user.profile.full_name}.jpg")
     5.times do |i|
     users = User.create(email: Faker::Internet.email, password:"password")
     users.profile.update(first_name: Faker::Name.first_name, last_name:Faker::Name.last_name)
     users.profile.image.attach(io: user_images[i+1], filename: "#{users.profile.full_name}.jpg")
-    end
+  end
     10.times do |i|
         price_in_dollars = rand(25..100)
         price_cents = Money.from_amount(price_in_dollars, "EUR").cents
