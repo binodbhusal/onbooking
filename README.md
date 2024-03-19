@@ -35,7 +35,7 @@ OnBooking is a comprehensive accommodation booking platform like Airbnb designed
 
 
 <div align="center">
- <img src="./app/assets/onbooking_home.png" width="600"  height="auto" />
+ <img src="./app/assets/onbooking_home.png"/>
   <br/>
 </div>
 

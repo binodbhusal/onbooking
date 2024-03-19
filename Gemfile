@@ -10,7 +10,7 @@ gem 'rails', '~> 7.0.8'
 gem 'sprockets-rails'
 
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.1"
+gem 'pg', '~> 1.1'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
@@ -79,6 +79,7 @@ gem 'country_select', '~> 8.0'
 gem 'devise', '~> 4.9'
 gem 'faker'
 gem 'geocoder'
+gem 'google-cloud-storage'
 gem 'heroicon'
 gem 'jsonapi-serializer'
 gem 'money-rails', '~> 1.12'
@@ -87,4 +88,3 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'sass-rails', '~> 6.0'
 gem 'stripe-rails'
 gem 'tailwindcss-rails', '~> 2.3'
-gem 'google-cloud-storage'
