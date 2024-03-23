@@ -52,7 +52,9 @@ OnBooking is a comprehensive accommodation booking platform like Airbnb designed
     <li><a href="https://rubyonrails.org/">Ruby on Rails</a></li>
     <li><a href="https://stimulus.hotwired.dev/">Stimulus JS</a></li>
     <li><a href="https://tailwindcss.com/">Tailwind CSS</a></li>
-
+      <summary>Tools</summary>
+    <li><a href="https://cloud.google.com/">Google Cloud Storage</a></li>
+    <li><a href="https://www.heroku.com/">Heroku - for deployment</a></li>
   </ul>
 </details>
 
@@ -71,13 +73,14 @@ OnBooking is a comprehensive accommodation booking platform like Airbnb designed
 9. <strong>Reservations/Payments listing of user</strong>
 10. <strong>User profile update feature</strong>
 
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
- Click on this [Onbooking Live Demo](#) to view the live-demo of project. 
+ Click on this [Onbooking Live Demo](https://onbooking-1ceff53c6093.herokuapp.com/) to view the live-demo of project. 
   ```json
-email: test@testmail.com
+email: bb@gmail.com
 password: 123456
 ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
