@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :accounts, only: [:show, :update]
   resources :passwords, only: [:show, :update]
   resources :payments, only: [:index]
+  get '/payment/success', to: 'payments#success', as: 'payment_success'
   namespace :api do 
   resources :users, only: [:show]
   resources :favroutes, only: [:create, :destroy]
