@@ -1,6 +1,7 @@
 <div class="relative mx-auto w-full bg-white" 
-data-controller="stripe-elements"
+data-controller="stripe-element"
 >
+
   <div class="grid min-h-screen grid-cols-10">
     <div class="col-span-full py-6 px-4 sm:py-12 lg:col-span-6 lg:py-24">
       <div class="mx-auto w-full max-w-lg">
@@ -32,6 +33,11 @@ data-controller="stripe-elements"
             %>
          </div>
         </div>
+        <div class="mt-4 text-center hidden"
+        data-stripe-element-target="processingMessage">
+        <p class="text-gray-900 font-semibold">Processing...</p>
+          <p class="text-gray-700 text-sm">Please wait while we process your payment.</p>
+          </div>
         <p class="mt-10 text-center text-sm font-semibold text-gray-500">By placing this order you agree to the <a href="#" class="whitespace-nowrap text-[#df1761] underline hover:text-rose-500">Terms and Conditions</a></p>
         
       </div>
