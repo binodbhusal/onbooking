@@ -29,8 +29,7 @@ class ReservationPaymentsController < ApplicationController
       total: Money.from_amount(BigDecimal(payment_params[:total])),
       stripe_id: charge.id
     )
-
-    redirect_to root_path
+    redirect_to payment_success_path
   end
 
   private

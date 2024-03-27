@@ -8,7 +8,6 @@ static targets = ['checkin', 'checkout', 'numOfNights',
 
 connect() {
   this.updateTotal()
-console.log(Datepicker)
 const defaultCheckinDate = this.element.dataset.defaultCheckinDate;
 const checkinDatepicker = new Datepicker(this.checkinTarget, {
   minDate: new Date(defaultCheckinDate),
@@ -116,6 +115,7 @@ submitReservationComponent(e) {
   }, 100); 
   return
   }
+
 Turbo.visit(this.buildSubmitUrl(e.target.dataset.submitUrl))
 }
 }

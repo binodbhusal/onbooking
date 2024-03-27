@@ -4,7 +4,6 @@ require "rails/all"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
 module Onbooking
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -30,6 +29,5 @@ if ENV['GOOGLE_APPLICATION_CREDENTIALS'].present?
     bucket: 'onbooking_bucket'
   }
 end
-
   end
 end
