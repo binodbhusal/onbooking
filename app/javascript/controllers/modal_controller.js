@@ -14,8 +14,7 @@ export default class extends Controller {
       modalBackdrop.style.marginTop='100px'
     }
     if(modalBackdrop && modalTriggerId ==='property-description-modal'){
-    modalBackdrop.style.height='500px'
-    modalBackdrop.style.marginTop='100px'
+    modalBackdrop.style.height='600px'
     modalBackdrop.style.overflowY= 'scroll'
     modalBackdrop.style.scrollBehavior='smooth'
     }
