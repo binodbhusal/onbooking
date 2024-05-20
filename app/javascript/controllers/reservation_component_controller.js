@@ -115,7 +115,6 @@ submitReservationComponent(e) {
   }, 100); 
   return
   }
-
 Turbo.visit(this.buildSubmitUrl(e.target.dataset.submitUrl))
 }
 }
