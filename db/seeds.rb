@@ -1,5 +1,9 @@
 require 'open-uri'
 
+User.destroy_all
+Property.destroy_all
+Review.destroy_all
+
 user_images = []
 
     6.times do 

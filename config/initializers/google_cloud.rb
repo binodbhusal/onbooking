@@ -1,6 +1,6 @@
 # config/initializers/google_cloud.rb
 
-if Rails.env.production?
+if Rails.env.development?
     require "google/cloud/storage"
   
     gcs_credentials = ENV["GCS_CREDENTIALS"]
