@@ -34,6 +34,7 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /config/onbooking-4ee8e613b2c9.json
+encoded_gcs_key.txt
 .env
 /app/assets/builds/*
 !/app/assets/builds/.keep
